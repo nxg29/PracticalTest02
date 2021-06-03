@@ -12,8 +12,7 @@ import cz.msebera.android.httpclient.client.ClientProtocolException;
 public class ServerThread extends Thread {
     private int port = 0;
     private ServerSocket serverSocket = null;
-
-    //private HashMap<String, WeatherForecastInformation> data = null;
+    HashMap<String, String> cache;
 
     public ServerThread(int port) {
         this.port = port;
@@ -25,7 +24,7 @@ public class ServerThread extends Thread {
                 ioException.printStackTrace();
             }
         }
-        //this.data = new HashMap<>();
+        this.cache = new HashMap<>();
     }
 
     public void setPort(int port) {
@@ -44,13 +43,13 @@ public class ServerThread extends Thread {
         return serverSocket;
     }
 
-    /*public synchronized void setData(String city, WeatherForecastInformation weatherForecastInformation) {
-        this.data.put(city, weatherForecastInformation);
+    public synchronized void setData(String currency, String price) {
+        this.cache.put(currency, price);
     }
 
-    public synchronized HashMap<String, WeatherForecastInformation> getData() {
-        return data;
-    }*/
+    public synchronized HashMap<String, String> getData() {
+        return cache;
+    }
 
     @Override
     public void run() {

@@ -66,7 +66,7 @@ public class PracticalTest02MainActivity extends AppCompatActivity {
                 return;
             }
 
-            if (!currency.equals("EUR") || !currency.equals("USD")) {
+            if (!currency.equals("EUR") && !currency.equals("USD")) {
                 Toast.makeText(getApplicationContext(), "[MAIN ACTIVITY] Parameter currency should be EUR or USD", Toast.LENGTH_SHORT).show();
                 return;
             }
